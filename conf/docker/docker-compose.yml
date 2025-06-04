@@ -1,0 +1,30 @@
+# Docker-Compose document
+# Ref : https://docs.docker.com/compose/compose-file/
+
+services:
+  java:
+    build:
+      context: java
+    container_name: docker-java-sdk_${PROJECT_NAME}
+    volumes:
+      - ${CACHE_DIR}/java:/cache
+      - ${APP_DIR}/java:/app
+    working_dir: /app
+
+  maven:
+    build:
+      context: maven
+    container_name: docker-java-maven-sdk_${PROJECT_NAME}
+    volumes:
+      - ${CACHE_DIR}/maven:/cache
+      - ${APP_DIR}/maven:/app
+    working_dir: /app
+
+  gradle:
+    build:
+      context: gradle
+    container_name: docker-java-gradle-sdk_${PROJECT_NAME}
+    volumes:
+      - ${CACHE_DIR}/gradle:/cache
+      - ${APP_DIR}/gradle:/app
+    working_dir: /app
